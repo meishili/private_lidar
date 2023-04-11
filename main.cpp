@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
     int reference = size / 20 * 3 + 1;
     raman_backscatter[reference] = molecule[reference];
     fernald_backscatter[reference] = molecule[reference];
-    std::cout << fernald_backscatter[reference] << std::endl;
     double lamda_0, lamda_r;
     std::cout << "please enter wavelength of elastic and Raman ";
     std::cin >> lamda_0 >> lamda_r;
