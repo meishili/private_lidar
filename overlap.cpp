@@ -29,10 +29,6 @@ const std::unique_ptr<double[]> &distance, const int n, const double backscatter
     temp5 = molecule[n] + backscatter;
     temp6 = get_diff(molecule, distance, n - 3, n + 3);
     k1 = ((temp1 + temp2 + temp3 - temp4) * temp5 - temp6) * (distance[n] - distance[n - 1]);
-    // std::cout<<n<<std::endl;
-    // std::cout<<temp1<<" "<<temp2<<" "<<temp3<<std::endl;
-    // std::cout<<temp4<<" "<<temp5<<"  "<<temp6<<std::endl;
-    // std::cout<<k1<<std::endl;
 
     temp1 = get_diff(molecule, distance, n - 3, n + 2) / (molecule[n] + molecule[n - 1]) * 2.0;
     temp2 = (1.0 - lamda_0 / lamda_r) * (backscatter - k1 / 2.0) * lidar_ratio;
@@ -41,9 +37,6 @@ const std::unique_ptr<double[]> &distance, const int n, const double backscatter
     temp5 = (molecule[n - 1] + molecule[n]) / 2.0 + backscatter - k1 / 2.0;
     temp6 = get_diff(molecule, distance, n - 3, n + 2);
     k2 = ((temp1 + temp2 + temp3 - temp4) * temp5 - temp6) * (distance[n] - distance[n - 1]);
-    // // std::cout<<k2<<std::endl;
-    // std::cout<<temp1<<" "<<temp2<<" "<<temp3<<std::endl;
-    // std::cout<<temp4<<" "<<temp5<<"  "<<temp6<<std::endl;
 
     temp1 = get_diff(molecule, distance, n - 3, n + 2) / (molecule[n] + molecule[n - 1]) * 2.0;
     temp2 = (1.0 - lamda_0 / lamda_r) * (backscatter - k1 / 2.0) * lidar_ratio;
@@ -60,7 +53,6 @@ const std::unique_ptr<double[]> &distance, const int n, const double backscatter
     temp5 = molecule[n - 1] + backscatter - k3;
     temp6 = get_diff(molecule, distance, n - 4, n + 2);
     k4 = ((temp1 + temp2 + temp3 - temp4) * temp5 - temp6) * (distance[n] - distance[n - 1]);
-    // std::cout<<k1<<"  "<<k2<<"  "<<k3<<"  "<<k4<<std::endl;
 
     double runge;
     runge = backscatter - (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0;
