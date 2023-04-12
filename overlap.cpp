@@ -58,3 +58,10 @@ const std::unique_ptr<double[]> &distance, const int n, const double backscatter
     runge = backscatter - (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0;
     return runge;
 }
+
+void openfile(std::ifstream &sin, const std::string &filename){
+    sin.open(filename);
+    if(!sin.is_open()){
+        throw bad_file(filename);
+    }
+}

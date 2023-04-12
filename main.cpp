@@ -13,11 +13,25 @@ int main(int argc, char *argv[])
     std::string filename;
     std::cout<<"please enter molecule extinction path:";
     std::cin>>filename;
-    mol_in.open(filename);
+    try{
+        openfile(mol_in, filename);
+    }
+    catch(bad_file &bf){
+        bf.mesg();
+        std::cout<<"sorry, program break now!"<<std::endl;
+        return 0;
+    }
     std::ifstream signal_in;
     std::cout<<"please enter signal path: ";
     std::cin>>filename;
-    signal_in.open(filename);
+    try{
+        openfile(signal_in, filename);
+    }
+    catch(bad_file &gf){
+        gf.mesg();
+        std::cout<<"sorry, program break now!"<<std::endl;
+        return 0;
+    }
     for (int i = 0; i < size; i++)
     {
         mol_in >> molecule[i];
