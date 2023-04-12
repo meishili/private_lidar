@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     double lamda_0, lamda_r;
     std::cout << "please enter wavelength of elastic and Raman ";
     std::cin >> lamda_0 >> lamda_r;
-    std::unique_ptr<std::unique_ptr<double[]>[]> overlap(new std::unique_ptr<double[]>[100]);
+    std::unique_ptr<std::unique_ptr<double[]>[]> overlap = std::make_unique<std::unique_ptr<double[]>[]>(100);
     for (int i = 0; i < 100; i++)
     {
         overlap[i] = std::make_unique<double[]>(size);
